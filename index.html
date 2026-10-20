@@ -1,0 +1,1510 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Sandeep Yadav | BCA Student & Developer</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --bg:#0c0c15;
+    --bg-alt:#111120;
+    --surface:#16162a;
+    --surface-hi:#1f1f38;
+    --border:#2a2a45;
+    --text:#eee9fb;
+    --muted:#8c87ac;
+    --violet:#a78bfa;
+    --violet-deep:#7c5cf0;
+    --mint:#34d399;
+    --amber:#fbbf24;
+
+    --font-display:'Sora', sans-serif;
+    --font-body:'Inter', sans-serif;
+    --font-mono:'JetBrains Mono', monospace;
+  }
+
+  *{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+  }
+
+  html{
+    scroll-behavior:smooth;
+  }
+
+  body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:var(--font-body);
+    line-height:1.65;
+    overflow-x:hidden;
+  }
+
+  ::selection{
+    background:var(--violet);
+    color:#0c0c15;
+  }
+
+  img{
+    max-width:100%;
+    display:block;
+  }
+
+  .noise-bg{
+    position:fixed;
+    inset:0;
+    z-index:-2;
+
+    background:
+      radial-gradient(
+        circle at 15% 10%,
+        rgba(167,139,250,0.16),
+        transparent 45%
+      ),
+      radial-gradient(
+        circle at 85% 30%,
+        rgba(52,211,153,0.10),
+        transparent 40%
+      ),
+      var(--bg);
+  }
+
+  .container{
+    width:92%;
+    max-width:1080px;
+    margin:0 auto;
+  }
+
+  /* NAVBAR */
+
+  nav{
+    position:fixed;
+    top:0;
+    left:0;
+    right:0;
+    z-index:100;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    padding:18px 6%;
+
+    background:rgba(12,12,21,0.7);
+    backdrop-filter:blur(10px);
+
+    border-bottom:1px solid var(--border);
+  }
+
+  .logo{
+    font-family:var(--font-display);
+    font-weight:800;
+    font-size:16px;
+    color:var(--text);
+  }
+
+  .logo span{
+    color:var(--violet);
+  }
+
+  .nav-links{
+    display:flex;
+    gap:26px;
+    list-style:none;
+  }
+
+  .nav-links a{
+    color:var(--muted);
+    text-decoration:none;
+    font-size:14px;
+    font-weight:500;
+    transition:color .2s;
+  }
+
+  .nav-links a:hover{
+    color:var(--text);
+  }
+
+  @media (max-width:680px){
+    .nav-links{
+      display:none;
+    }
+  }
+
+  /* HERO */
+
+  header{
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    padding:120px 0 60px;
+  }
+
+  .hero-grid{
+    display:grid;
+    grid-template-columns:1.15fr 0.85fr;
+    gap:44px;
+    align-items:center;
+  }
+
+  @media (max-width:880px){
+    .hero-grid{
+      grid-template-columns:1fr;
+    }
+  }
+
+  .eyebrow{
+    font-family:var(--font-mono);
+    color:var(--mint);
+    font-size:13px;
+    letter-spacing:1px;
+    margin-bottom:16px;
+
+    display:flex;
+    align-items:center;
+    gap:8px;
+  }
+
+  .eyebrow::before{
+    content:'●';
+    font-size:9px;
+    color:var(--mint);
+    animation:pulse 2s ease-in-out infinite;
+  }
+
+  h1{
+    font-family:var(--font-display);
+    font-size:clamp(34px,5vw,54px);
+    font-weight:800;
+    line-height:1.12;
+    letter-spacing:-1px;
+    margin-bottom:14px;
+  }
+
+  h1 span{
+    background:linear-gradient(
+      120deg,
+      var(--violet),
+      var(--mint)
+    );
+
+    -webkit-background-clip:text;
+    background-clip:text;
+    color:transparent;
+  }
+
+  .role-line{
+    font-family:var(--font-mono);
+    font-size:clamp(14px,1.8vw,18px);
+    color:var(--muted);
+    margin-bottom:24px;
+    min-height:26px;
+  }
+
+  .role-line .cursor{
+    display:inline-block;
+    width:9px;
+    height:1.1em;
+    background:var(--violet);
+    margin-left:3px;
+    vertical-align:middle;
+    animation:blink 1s step-end infinite;
+  }
+
+  .hero p.desc{
+    color:var(--muted);
+    font-size:16px;
+    max-width:520px;
+    margin-bottom:30px;
+  }
+
+  .btn-row{
+    display:flex;
+    gap:14px;
+    flex-wrap:wrap;
+  }
+
+  .btn{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+
+    padding:13px 26px;
+
+    border-radius:9px;
+
+    font-weight:600;
+    font-size:14.5px;
+
+    text-decoration:none;
+
+    transition:.25s ease;
+
+    border:1px solid transparent;
+  }
+
+  .btn-primary{
+    background:var(--violet);
+    color:#0c0c15;
+  }
+
+  .btn-primary:hover{
+    background:#c3b1ff;
+    transform:translateY(-2px);
+    box-shadow:0 10px 25px -8px rgba(167,139,250,0.5);
+  }
+
+  .btn-ghost{
+    border-color:var(--border);
+    color:var(--text);
+  }
+
+  .btn-ghost:hover{
+    border-color:var(--violet);
+    color:var(--violet);
+    transform:translateY(-2px);
+  }
+
+  /* PLAYER CARD */
+
+  .player-card{
+    background:var(--surface);
+    border:1px solid var(--border);
+    border-radius:16px;
+
+    padding:26px;
+
+    position:relative;
+    overflow:hidden;
+
+    box-shadow:0 25px 60px -25px rgba(0,0,0,0.7);
+  }
+
+  .player-card::before{
+    content:'';
+    position:absolute;
+    top:-40%;
+    right:-30%;
+
+    width:260px;
+    height:260px;
+
+    background:radial-gradient(
+      circle,
+      rgba(167,139,250,0.25),
+      transparent 70%
+    );
+
+    pointer-events:none;
+  }
+
+  .player-top{
+    display:flex;
+    align-items:center;
+    gap:16px;
+    margin-bottom:22px;
+  }
+
+  .level-ring{
+    width:64px;
+    height:64px;
+    border-radius:50%;
+
+    background:conic-gradient(
+      var(--violet) 0deg,
+      var(--mint) 0deg,
+      var(--border) 0deg
+    );
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    flex-shrink:0;
+  }
+
+  .level-ring-inner{
+    width:52px;
+    height:52px;
+    border-radius:50%;
+
+    background:var(--surface);
+
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+
+    font-family:var(--font-mono);
+  }
+
+  .level-ring-inner b{
+    font-size:16px;
+    line-height:1;
+  }
+
+  .level-ring-inner small{
+    font-size:8px;
+    color:var(--muted);
+  }
+
+  .player-name{
+    font-family:var(--font-display);
+    font-weight:700;
+    font-size:17px;
+  }
+
+  .player-class{
+    font-family:var(--font-mono);
+    font-size:12px;
+    color:var(--mint);
+    margin-top:2px;
+  }
+
+  .xp-label{
+    display:flex;
+    justify-content:space-between;
+
+    font-family:var(--font-mono);
+    font-size:11.5px;
+    color:var(--muted);
+
+    margin-bottom:6px;
+  }
+
+  .xp-bar{
+    height:10px;
+    background:var(--bg-alt);
+    border-radius:6px;
+    overflow:hidden;
+    margin-bottom:20px;
+    border:1px solid var(--border);
+  }
+
+  .xp-fill{
+    height:100%;
+    width:0%;
+
+    background:linear-gradient(
+      90deg,
+      var(--violet),
+      var(--mint)
+    );
+
+    border-radius:6px;
+
+    transition:
+      width 1.6s cubic-bezier(.3,.9,.3,1);
+  }
+
+  .stat-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:10px;
+  }
+
+  .stat-box{
+    background:var(--bg-alt);
+    border:1px solid var(--border);
+    border-radius:10px;
+
+    padding:12px 8px;
+
+    text-align:center;
+  }
+
+  .stat-box b{
+    display:block;
+
+    font-family:var(--font-mono);
+    font-size:16px;
+    color:var(--text);
+  }
+
+  .stat-box span{
+    font-size:10.5px;
+    color:var(--muted);
+  }
+
+  @keyframes blink{
+    50%{
+      opacity:0;
+    }
+  }
+
+  @keyframes pulse{
+    0%,100%{
+      opacity:1;
+    }
+
+    50%{
+      opacity:.4;
+    }
+  }
+
+  /* SECTIONS */
+
+  section{
+    padding:96px 0;
+    position:relative;
+  }
+
+  .section-head{
+    margin-bottom:42px;
+  }
+
+  .section-head .eyebrow{
+    margin-bottom:8px;
+  }
+
+  .section-head h2{
+    font-family:var(--font-display);
+    font-size:clamp(24px,3vw,34px);
+    font-weight:800;
+    letter-spacing:-0.5px;
+  }
+
+  .reveal{
+    opacity:0;
+    transform:translateY(26px);
+    transition:
+      opacity .7s ease,
+      transform .7s ease;
+  }
+
+  .reveal.in{
+    opacity:1;
+    transform:translateY(0);
+  }
+
+  /* ABOUT */
+
+  .quest-log{
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+    max-width:680px;
+  }
+
+  .quest{
+    display:flex;
+    align-items:center;
+    gap:14px;
+
+    background:var(--surface);
+    border:1px solid var(--border);
+    border-radius:10px;
+
+    padding:16px 18px;
+
+    font-size:15px;
+
+    transition:
+      transform .25s ease,
+      border-color .25s ease;
+  }
+
+  .quest:hover{
+    transform:translateX(6px);
+    border-color:var(--violet);
+  }
+
+  .quest .ico{
+    font-size:19px;
+  }
+
+  /* TECH STACK */
+
+  .stack-card{
+    background:var(--surface);
+    border:1px solid var(--border);
+    border-radius:16px;
+
+    padding:34px;
+
+    text-align:center;
+  }
+
+  .stack-card img{
+    margin:0 auto;
+  }
+
+  /* GITHUB STATS */
+
+  .stats-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:20px;
+  }
+
+  @media (max-width:760px){
+    .stats-grid{
+      grid-template-columns:1fr;
+    }
+  }
+
+  .stat-card{
+    background:var(--surface);
+    border:1px solid var(--border);
+    border-radius:14px;
+
+    padding:16px;
+
+    overflow:hidden;
+  }
+
+  .stat-card img{
+    width:100%;
+    border-radius:8px;
+  }
+
+  .full-card{
+    background:var(--surface);
+    border:1px solid var(--border);
+    border-radius:14px;
+
+    padding:16px;
+    margin-top:20px;
+  }
+
+  .full-card img{
+    width:100%;
+    border-radius:8px;
+  }
+
+  /* GOALS */
+
+  .goals-grid{
+    display:grid;
+    grid-template-columns:
+      repeat(auto-fit,minmax(240px,1fr));
+
+    gap:16px;
+  }
+
+  .goal-card{
+    background:var(--surface);
+    border:1px solid var(--border);
+    border-radius:12px;
+
+    padding:18px 20px;
+
+    display:flex;
+    align-items:center;
+    gap:12px;
+
+    transition:
+      transform .3s ease,
+      border-color .3s ease;
+  }
+
+  .goal-card:hover{
+    transform:translateY(-4px);
+    border-color:var(--mint);
+  }
+
+  .goal-check{
+    width:22px;
+    height:22px;
+
+    border-radius:6px;
+    border:2px solid var(--mint);
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    flex-shrink:0;
+
+    color:var(--mint);
+    font-size:13px;
+  }
+
+  /* QUOTE */
+
+  .quote-card{
+    background:var(--surface);
+    border:1px solid var(--border);
+    border-radius:16px;
+
+    padding:44px;
+
+    text-align:center;
+
+    position:relative;
+
+    background-image:
+      radial-gradient(
+        circle at top left,
+        rgba(167,139,250,0.1),
+        transparent 60%
+      );
+  }
+
+  .quote-card p{
+    font-family:var(--font-display);
+    font-size:clamp(18px,2.6vw,26px);
+    font-weight:600;
+    line-height:1.5;
+  }
+
+  .quote-card span{
+    display:block;
+    margin-top:16px;
+
+    color:var(--muted);
+
+    font-family:var(--font-mono);
+    font-size:13px;
+  }
+
+  /* CONNECT */
+
+  .contact-card{
+    background:var(--surface);
+    border:1px solid var(--border);
+    border-radius:16px;
+
+    padding:50px;
+
+    text-align:center;
+  }
+
+  .contact-card h2{
+    font-family:var(--font-display);
+    font-size:clamp(24px,3vw,32px);
+
+    margin-bottom:12px;
+    font-weight:800;
+  }
+
+  .contact-card p{
+    color:var(--muted);
+    margin-bottom:30px;
+  }
+
+  .contact-links{
+    display:flex;
+    gap:14px;
+    justify-content:center;
+    flex-wrap:wrap;
+  }
+
+  .clink{
+    display:flex;
+    align-items:center;
+    gap:8px;
+
+    padding:12px 22px;
+
+    border:1px solid var(--border);
+    border-radius:9px;
+
+    color:var(--text);
+
+    text-decoration:none;
+
+    font-weight:600;
+    font-size:14px;
+
+    transition:.25s ease;
+  }
+
+  .clink:hover{
+    border-color:var(--violet);
+    color:var(--violet);
+    transform:translateY(-3px);
+  }
+
+  footer{
+    padding:34px 0;
+
+    text-align:center;
+
+    color:var(--muted);
+
+    font-family:var(--font-mono);
+    font-size:12.5px;
+
+    border-top:1px solid var(--border);
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    *{
+      animation-duration:0.01ms !important;
+      animation-iteration-count:1 !important;
+      transition-duration:0.01ms !important;
+      scroll-behavior:auto !important;
+    }
+  }
+</style>
+</head>
+
+<body>
+
+<div class="noise-bg"></div>
+
+<!-- NAVBAR -->
+
+<nav>
+
+  <div class="logo">
+    sandeep<span>.dev</span>
+  </div>
+
+  <ul class="nav-links">
+
+    <li>
+      <a href="#about">about</a>
+    </li>
+
+    <li>
+      <a href="#stack">stack</a>
+    </li>
+
+    <li>
+      <a href="#stats">github</a>
+    </li>
+
+    <li>
+      <a href="#goals">goals</a>
+    </li>
+
+    <li>
+      <a href="#connect">connect</a>
+    </li>
+
+  </ul>
+
+</nav>
+
+
+<!-- HERO -->
+
+<header>
+
+  <div class="container">
+
+    <div class="hero-grid">
+
+      <div>
+
+        <div class="eyebrow">
+          open to opportunities
+        </div>
+
+        <h1>
+          Sandeep Yadav is levelling up into a
+          <span>software engineer.</span>
+        </h1>
+
+        <div class="role-line">
+          BCA Student
+          <span class="cursor"></span>
+        </div>
+
+        <p class="desc">
+          BCA student and developer in progress, currently learning
+          Java, Python, JavaScript, Data Structures & Algorithms,
+          and building real-world projects while improving my
+          programming skills.
+        </p>
+
+        <div class="btn-row">
+
+          <a
+            href="#stats"
+            class="btn btn-primary"
+          >
+            See GitHub Stats
+          </a>
+
+          <a
+            href="https://github.com/sy5211647-byte"
+            target="_blank"
+            class="btn btn-ghost"
+          >
+            Visit My GitHub
+          </a>
+
+        </div>
+
+      </div>
+
+
+      <!-- PLAYER CARD -->
+
+      <div class="player-card">
+
+        <div class="player-top">
+
+          <div
+            class="level-ring"
+            id="levelRing"
+          >
+
+            <div class="level-ring-inner">
+
+              <b>Lv.1</b>
+
+              <small>BCA</small>
+
+            </div>
+
+          </div>
+
+
+          <div>
+
+            <div class="player-name">
+              Sandeep Yadav
+            </div>
+
+            <div class="player-class">
+              Class: Developer
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <div class="xp-label">
+
+          <span>
+            XP — Java & Python
+          </span>
+
+          <span id="xpPercent">
+            0%
+          </span>
+
+        </div>
+
+
+        <div class="xp-bar">
+
+          <div
+            class="xp-fill"
+            id="xpFill"
+          ></div>
+
+        </div>
+
+
+        <div class="stat-grid">
+
+          <div class="stat-box">
+
+            <b>Java</b>
+
+            <span>
+              Learning
+            </span>
+
+          </div>
+
+
+          <div class="stat-box">
+
+            <b>DSA</b>
+
+            <span>
+              Focus Area
+            </span>
+
+          </div>
+
+
+          <div class="stat-box">
+
+            <b>2026</b>
+
+            <span>
+              Target Year
+            </span>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</header>
+
+
+<!-- ABOUT -->
+
+<section id="about">
+
+  <div class="container reveal">
+
+    <div class="section-head">
+
+      <div class="eyebrow">
+        // about
+      </div>
+
+      <h2>
+        Quest log
+      </h2>
+
+    </div>
+
+
+    <div class="quest-log">
+
+      <div class="quest">
+        <span class="ico">🎓</span>
+        BCA Student
+      </div>
+
+      <div class="quest">
+        <span class="ico">☕</span>
+        Learning Java
+      </div>
+
+      <div class="quest">
+        <span class="ico">🐍</span>
+        Learning Python
+      </div>
+
+      <div class="quest">
+        <span class="ico">📚</span>
+        Learning Data Structures & Algorithms
+      </div>
+
+      <div class="quest">
+        <span class="ico">🌐</span>
+        Learning Web Development
+      </div>
+
+      <div class="quest">
+        <span class="ico">🚀</span>
+        Building Real-World Projects
+      </div>
+
+      <div class="quest">
+        <span class="ico">💡</span>
+        Passionate About Programming
+      </div>
+
+      <div class="quest">
+        <span class="ico">🎯</span>
+        Goal: Become a Software Engineer
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- TECH STACK -->
+
+<section id="stack">
+
+  <div class="container reveal">
+
+    <div class="section-head">
+
+      <div class="eyebrow">
+        // tech stack
+      </div>
+
+      <h2>
+        Tools I'm building with
+      </h2>
+
+    </div>
+
+
+    <div class="stack-card">
+
+      <img
+        src="https://skillicons.dev/icons?i=java,c,cpp,sql,git,github,javascript,python,html,css"
+        alt="C C++ Sql Git GitHub Java JavaScript Python HTML CSS"
+      >
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- GITHUB STATS -->
+
+<section id="stats">
+
+  <div class="container reveal">
+
+    <div class="section-head">
+
+      <div class="eyebrow">
+        // github stats
+      </div>
+
+      <h2>
+        Live from GitHub
+      </h2>
+
+    </div>
+
+
+    <div class="stats-grid">
+
+      <div class="stat-card">
+
+        <img
+          src="https://github-readme-stats.vercel.app/api?username=sy5211647-byte&show_icons=true&theme=tokyonight&hide_border=true"
+          alt="Sandeep GitHub Stats"
+        >
+
+      </div>
+
+
+      <div class="stat-card">
+
+        <img
+          src="https://github-readme-stats.vercel.app/api/top-langs/?username=sy5211647-byte&layout=compact&theme=tokyonight&hide_border=true"
+          alt="Sandeep Top Languages"
+        >
+
+      </div>
+
+    </div>
+
+
+    <div class="full-card">
+
+      <img
+        src="https://github-readme-streak-stats.herokuapp.com/?user=sy5211647-byte&theme=tokyonight&hide_border=true"
+        alt="Sandeep GitHub Streak"
+      >
+
+    </div>
+
+
+    <div class="full-card">
+
+      <img
+        src="https://github-profile-trophy.vercel.app/?username=sy5211647-byte&theme=tokyonight&no-frame=true&row=1&column=6"
+        alt="Sandeep GitHub Trophies"
+      >
+
+    </div>
+
+
+    <div class="full-card">
+
+      <img
+        src="https://github-readme-activity-graph.vercel.app/graph?username=sy5211647-byte&theme=tokyo-night"
+        alt="Sandeep GitHub Contribution Graph"
+      >
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- GOALS -->
+
+<section id="goals">
+
+  <div class="container reveal">
+
+    <div class="section-head">
+
+      <div class="eyebrow">
+        // 2026 goals
+      </div>
+
+      <h2>
+        What I'm working toward
+      </h2>
+
+    </div>
+
+
+    <div class="goals-grid">
+
+      <div class="goal-card">
+
+        <div class="goal-check">
+          ✓
+        </div>
+
+        Learn Java
+      </div>
+
+
+      <div class="goal-card">
+
+        <div class="goal-check">
+          ✓
+        </div>
+
+        Learn Python
+      </div>
+
+
+      <div class="goal-card">
+
+        <div class="goal-check">
+          ✓
+        </div>
+
+        Master DSA
+      </div>
+
+
+      <div class="goal-card">
+
+        <div class="goal-check">
+          ✓
+        </div>
+
+        Learn JavaScript
+      </div>
+
+
+      <div class="goal-card">
+
+        <div class="goal-check">
+          ✓
+        </div>
+
+        Build Real-World Projects
+      </div>
+
+
+      <div class="goal-card">
+
+        <div class="goal-check">
+          ✓
+        </div>
+
+        Become a Software Engineer
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- QUOTE -->
+
+<section>
+
+  <div class="container reveal">
+
+    <div class="quote-card">
+
+      <p>
+        "Consistency beats talent when talent doesn't stay consistent."
+      </p>
+
+      <span>
+        — favorite quote
+      </span>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- CONNECT -->
+
+<section id="connect">
+
+  <div class="container reveal">
+
+    <div class="contact-card">
+
+      <h2>
+        Let's connect.
+      </h2>
+
+      <p>
+        Always up for a chat about Java, Python,
+        DSA, Web Development, or programming.
+      </p>
+
+
+      <div class="contact-links">
+
+        <a
+          href="mailto:sy5211647@gmail.com"
+          class="clink"
+        >
+          ✉ Email
+        </a>
+
+
+        <a
+          href="https://github.com/sy5211647-byte"
+          target="_blank"
+          class="clink"
+        >
+          GitHub
+        </a>
+
+
+        <a
+          href="https://www.linkedin.com/in/sandeep-yadav-62a87b38a?utm_source=share_via&utm_content=profile&utm_medium=member_android"
+          target="_blank"
+          class="clink"
+        >
+          in LinkedIn
+        </a>
+
+
+        <a
+          href="https://wa.me/qr/LKLZ4YDQFUXWF1?s=v"
+          target="_blank"
+          class="clink"
+        >
+          ☏ WhatsApp
+        </a>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+  ⭐ Thanks for visiting —
+  Keep learning, keep building, keep growing 🚀
+
+</footer>
+
+
+<script>
+
+  /* Scroll Reveal */
+
+  const reveals =
+    document.querySelectorAll('.reveal');
+
+  const io =
+    new IntersectionObserver(
+      (entries)=>{
+
+        entries.forEach(e=>{
+
+          if(e.isIntersecting){
+
+            e.target.classList.add('in');
+
+            io.unobserve(e.target);
+
+          }
+
+        });
+
+      },
+      {
+        threshold:0.15
+      }
+    );
+
+  reveals.forEach(
+    r=>io.observe(r)
+  );
+
+
+  /* XP BAR */
+
+  window.addEventListener(
+    'load',
+    ()=>{
+
+      setTimeout(()=>{
+
+        const pct = 42;
+
+        document
+          .getElementById('xpFill')
+          .style.width =
+          pct + '%';
+
+        document
+          .getElementById('xpPercent')
+          .textContent =
+          pct + '%';
+
+
+        const ring =
+          document.getElementById(
+            'levelRing'
+          );
+
+
+        ring.style.background =
+          `conic-gradient(
+            var(--violet)
+            ${pct*3.6}deg,
+
+            var(--mint)
+            ${pct*3.6}deg,
+
+            var(--border)
+            0deg
+          )`;
+
+      },400);
+
+    }
+  );
+
+
+  /* Typing Role */
+
+  const roles = [
+
+    "BCA Student",
+
+    "Java Learner",
+
+    "Python Developer",
+
+    "JavaScript Learner",
+
+    "DSA Learner",
+
+    "Future Software Engineer"
+
+  ];
+
+
+  const roleEl =
+    document.querySelector(
+      '.role-line'
+    );
+
+
+  const cursor =
+    document.createElement(
+      'span'
+    );
+
+
+  cursor.className =
+    'cursor';
+
+
+  let ri = 0;
+
+  let ci = 0;
+
+  let deleting = false;
+
+
+  function typeLoop(){
+
+    const current =
+      roles[ri];
+
+
+    if(!deleting){
+
+      ci++;
+
+      roleEl.firstChild.textContent =
+        current.slice(0,ci);
+
+
+      if(ci === current.length){
+
+        deleting = true;
+
+        setTimeout(
+          typeLoop,
+          1400
+        );
+
+        return;
+
+      }
+
+    }
+
+    else{
+
+      ci--;
+
+      roleEl.firstChild.textContent =
+        current.slice(0,ci);
+
+
+      if(ci === 0){
+
+        deleting = false;
+
+        ri =
+          (ri + 1) %
+          roles.length;
+
+      }
+
+    }
+
+
+    setTimeout(
+      typeLoop,
+      deleting ? 35 : 55
+    );
+
+  }
+
+
+  roleEl.innerHTML = '';
+
+  const textNode =
+    document.createTextNode('');
+
+
+  roleEl.appendChild(
+    textNode
+  );
+
+
+  roleEl.appendChild(
+    cursor
+  );
+
+
+  setTimeout(
+    typeLoop,
+    600
+  );
+
+</script>
+
+</body>
+</html>
